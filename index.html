@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		function padString(str, strLength, strSymbol = '*', strRight = true) {
+			if (str.length > strLength) {
+				str = str.substr(0, strLength);
+			} else {
+				strLength -= str.length;
+				console.log(strLength);
+				for (var i = 1; i <= strLength; i++) {
+					if(strRight) {
+						str += strSymbol;
+					} else {
+						str = strSymbol + str;
+					}
+				}
+
+			}
+			console.log(str);
+		}
+
+		padString('text', 10, '&', false);
+
+	</script>
+
+</body>
+</html>
