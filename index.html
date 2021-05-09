@@ -5,27 +5,31 @@
 </head>
 <body>
 	<script>
-		function padString(str, strLength, strSymbol = '*', strRight = true) {
-			if (str.length > strLength) {
-				str = str.substr(0, strLength);
-			} else {
-				strLength -= str.length;
-				console.log(strLength);
-				for (var i = 1; i <= strLength; i++) {
-					if(strRight) {
-						str += strSymbol;
-					} else {
-						str = strSymbol + str;
-					}
-				}
-
+		function padString(str, strLength, strChar, strRight = true) {
+			var result = '';
+			if (!str || !strLength) {
+				throw new Error('Enter string and length');
 			}
-			console.log(str);
+			if (str.length > strLength) {
+				result = str.substr(0, strLength);
+				return result;
+			} 
+			if (!strChar || strChar.length > 1) {
+				throw new Error('Enter one char')
+			}
+			var resultChar = '';
+			var resultLength = strLength - str.length;
+			for (var i = 1; i <= resultLength; i++) {
+				resultChar += strChar;	
+			}
+			if(strRight) {
+				result = str + resultChar;
+			} else {
+				result = resultChar + str;
+			}
+			return result;
 		}
-
-		padString('text', 10, '&', false);
-
+		console.log(padString('text', 8, '*', false));
 	</script>
-
 </body>
 </html>
